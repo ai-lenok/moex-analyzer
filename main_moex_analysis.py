@@ -3,6 +3,7 @@
 import argparse
 from moex_client import MoexClient
 
+
 def main():
     parser = argparse.ArgumentParser(description='Analysis of Moscow Exchange Securities.')
     parser.add_argument('--security', help="Security for analysis")
@@ -10,13 +11,20 @@ def main():
     args = parser.parse_args()
 
     if args.security is not None:
+        engine, market, board, security, date = 'stock', 'shares', 'TQBR', args.security, args.date
         client = MoexClient()
-        data, column = client.get_history_securities('stock', 'shares', 'TQBR', args.security, args.date)
-        print(column)
-        for item in data:
-            print(item)
+        data, column = client.get_history_securities(engine, market, board, security, date)
+        if 0 < len(data):
+            print(column)
+            for item in data:
+                print(item)
+        else:
+            print("We do not have any data.")
+            print("Engine: {}, market: {}, board: {}, security: {}, date: {}"
+                  .format(engine, market, board, security, date))
     else:
         parser.print_help()
+
 
 if __name__ == '__main__':
     main()
