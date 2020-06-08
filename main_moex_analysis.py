@@ -11,19 +11,22 @@ def main():
     args = parser.parse_args()
 
     if args.security is not None:
-        engine, market, board, security, date = 'stock', 'shares', 'TQBR', args.security, args.date
-        client = MoexClient()
-        data, column = client.get_history_securities(engine, market, board, security, date)
-        if 0 < len(data):
-            print(column)
-            for item in data:
-                print(item)
-        else:
-            print("We do not have any data.")
-            print("Engine: {}, market: {}, board: {}, security: {}, date: {}"
-                  .format(engine, market, board, security, date))
+        launch_client('stock', 'shares', 'TQBR', args.security, args.date)
     else:
         parser.print_help()
+
+
+def launch_client(engine, market, board, security, date):
+    client = MoexClient()
+    data, column = client.get_history_securities(engine, market, board, security, date)
+    if 0 < len(data):
+        print(column)
+        for item in data:
+            print(item)
+    else:
+        print("We do not have any data.")
+        print("Engine: {}, market: {}, board: {}, security: {}, date: {}"
+              .format(engine, market, board, security, date))
 
 
 if __name__ == '__main__':
