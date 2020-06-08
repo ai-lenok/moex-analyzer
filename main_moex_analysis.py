@@ -6,14 +6,12 @@ from moex_client import MoexClient
 
 def main():
     parser = argparse.ArgumentParser(description='Analysis of Moscow Exchange Securities.')
-    parser.add_argument('--security', help="Security for analysis")
+    parser.add_argument('--security', help="Security for analysis", required=True)
+    parser.add_argument('--board', help="Board where trade security", required=True)
     parser.add_argument('--date', help="Date of start analysis", default='1990-01-01')
     args = parser.parse_args()
 
-    if args.security is not None:
-        launch_client('stock', 'shares', 'TQBR', args.security, args.date)
-    else:
-        parser.print_help()
+    launch_client('stock', 'shares', args.board, args.security, args.date)
 
 
 def launch_client(engine, market, board, security, date):
