@@ -6,7 +6,7 @@ A simple engine for analyzing Moscow Exchange securities
 ## Bash
 ### Scheme
 ```shell script
-main_moex_analysis.py [-h] [--security SECURITY] [--date DATE]
+main_moex_analysis.py [-h] --security SECURITY --board BOARD [--date DATE]
 ```
 ### Example
 ```shell script
@@ -21,7 +21,7 @@ main_moex_analysis.py --security SBMX --board TQTF --date 2020-01-01
 ### Scheme
 ```shell script
 docker build -t <image_name> .
-docker run --name <container_name> -e SECURITY=<security_name> -e DATE=<date_start> <image_name>
+docker run --name <container_name> -e SECURITY=<security_name> -e BOARD=<board_name> -e DATE=<date_start> <image_name>
 ```
 
 ### Example
