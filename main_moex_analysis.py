@@ -23,7 +23,7 @@ def main():
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Analysis of Moscow Exchange Securities.',
+    parser = argparse.ArgumentParser(description='Moscow Exchange Securities Analyzer.',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-s', '--security', help="Security for analysis", nargs='+', required=True)
     parser.add_argument('-b', '--board', help="Board where trade security", required=True)
