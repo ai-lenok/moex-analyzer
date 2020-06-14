@@ -42,5 +42,7 @@ docker run --volume /home/user/moex/chart:/moex/chart moex_image \
            --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
 
+# Docker hub
+https://hub.docker.com/r/dzx912/moex-analyzer
 
 
