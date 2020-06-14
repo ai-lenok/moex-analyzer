@@ -39,15 +39,15 @@ class MoexChart:
         format_date = mdates.DateFormatter('%Y-%m')
 
         fig, ax = plt.subplots(figsize=(16, 10))
-        ax.set_title(security_name + ' график цен')
+        ax.set_title(security_name + ' price chart')
 
-        plt.plot(date_x, day_price, 'red', label='Цена закрытия')
-        plt.plot(date_x, week_price, 'yellow', label='Недельная скользящая средняя')
-        plt.plot(date_x, month_price, 'blue', label='Месячная скользящая средняя')
-        plt.plot(date_x, year_price, 'green', label='Годовая скользящая средняя')
+        plt.plot(date_x, day_price, 'red', label='Closing price of the day')
+        plt.plot(date_x, week_price, 'yellow', label='Weekly moving average')
+        plt.plot(date_x, month_price, 'blue', label='Monthly moving average')
+        plt.plot(date_x, year_price, 'green', label='Yearly moving average')
 
-        ax.set_ylabel('Рубли')
-        ax.set_xlabel('Дата')
+        ax.set_ylabel('Rubles (₽)')
+        ax.set_xlabel('Date')
 
         ax.xaxis.set_major_locator(months)
         ax.xaxis.set_major_formatter(format_date)
