@@ -3,10 +3,10 @@
 A simple engine for analyzing Moscow Exchange securities
 
 # Launch
-## Bash
+## Python
 ### Scheme
 ```shell script
-main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BOARD 
+python3 main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BOARD 
                       [--date DATE] [--chart]
 ```
 ### Arguments
@@ -22,11 +22,11 @@ main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BOARD
 ```
 ### Example
 ```shell script
-main_moex_analysis.py --security MOEX SBER --board TQBR --date 2020-01-01 --chart
+python3 main_moex_analysis.py --security MOEX SBER --board TQBR --date 2020-01-01 --chart
 ```
 Or
 ```shell script
-main_moex_analysis.py --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
+python3 main_moex_analysis.py --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
 
 After that inside the `chart/` directory you can find charts with security prices.
@@ -34,24 +34,33 @@ After that inside the `chart/` directory you can find charts with security price
 ## Docker
 ### Scheme
 ```shell script
-docker build -t <image_name> .
 docker run [--volume <absolume_path_to_image_dir>:/moex/chart] 
-           <image_name>
+           dzx912/moex-analyzer
            [-h] --security SECURITY [SECURITY ...] --board BOARD 
            [--date DATE] [--chart]
 ```
 
 ### Example
 ```shell script
-docker build -t moex_image .
-docker run moex_image --security MOEX SBER --board TQBR
+docker run dzx912/moex-analyzer --security MOEX --board TQBR
 ```
 Or
 ```shell script
-docker build -t moex_image .
-docker run --volume /home/user/moex/chart:/moex/chart moex_image \
+docker run --volume ~/moex/chart:/moex/chart \
+           dzx912/moex-analyzer \
            --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
+After that inside the `~/moex/chart` directory you can find charts with security prices.
+
+# Output
+## Analysis
+```shell script
+MOEX Week change:  -1.98%
+MOEX Month change: -0.35%
+MOEX Year change:  24.12%
+```
+## Chart
+<img src="https://raw.githubusercontent.com/dzx912/moex-analyzer/master/example/MOEX.png" alt="MOEX price chart" width="800"/>
 
 # Docker hub
 https://hub.docker.com/r/dzx912/moex-analyzer
