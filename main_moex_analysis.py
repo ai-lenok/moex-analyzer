@@ -10,21 +10,25 @@ from moex_trend import MoexTrend
 def main():
     args = parse_arguments()
 
-    engine_analyzer = MoexAnalizer('stock', 'shares', args.board, args.security, args.date)
-    data_frame = engine_analyzer.get_data_frame()
+    for security in args.security:
+        engine_analyzer = MoexAnalizer('stock', 'shares', args.board, security, args.date)
+        data_frame = engine_analyzer.get_data_frame()
+        trend = MoexTrend()
+        trend.print_trend(data_frame, security)
 
-    trend = MoexTrend()
-    trend.print_trend(data_frame, args.security)
-
-    chart = MoexChart()
-    chart.draw(data_frame, args.security, args.date)
+        if args.chart:
+            chart = MoexChart()
+            chart.draw(data_frame, security, args.date)
+        print()
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Analysis of Moscow Exchange Securities.')
-    parser.add_argument('--security', help="Security for analysis", required=True)
-    parser.add_argument('--board', help="Board where trade security", required=True)
-    parser.add_argument('--date', help="Date of start analysis", default='1990-01-01')
+    parser = argparse.ArgumentParser(description='Analysis of Moscow Exchange Securities.',
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-s', '--security', help="Security for analysis", nargs='+', required=True)
+    parser.add_argument('-b', '--board', help="Board where trade security", required=True)
+    parser.add_argument('-d', '--date', help="Date of start analysis", default='1990-01-01')
+    parser.add_argument('-c', '--chart', help="Draw chart", action='store_true')
     args = parser.parse_args()
     return args
 
