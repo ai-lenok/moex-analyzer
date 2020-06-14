@@ -18,24 +18,28 @@ Or
 main_moex_analysis.py --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
 
-After that inside the `chart /` directory you can find charts with security prices.
+After that inside the `chart/` directory you can find charts with security prices.
 
 ## Docker
 ### Scheme
 ```shell script
 docker build -t <image_name> .
-docker run --name <container_name> -e SECURITY=<security_name> -e BOARD=<board_name> -e DATE=<date_start> <image_name>
+docker run [--volume <absolume_path_to_image_dir>:/moex/chart] 
+           <image_name>
+           [-h] --security SECURITY [SECURITY ...] --board BOARD 
+           [--date DATE] [--chart]
 ```
 
 ### Example
 ```shell script
 docker build -t moex_image .
-docker run --name moex -e SECURITY=MOEX -e BOARD=TQBR -e DATE=2020-01-01 moex_image
+docker run moex_image --security MOEX SBER --board TQBR
 ```
 Or
 ```shell script
 docker build -t moex_image .
-docker run --name moex -e SECURITY=SBMX -e BOARD=TQTF -e DATE=2020-01-01 moex_image
+docker run --volume /home/user/moex/chart:/moex/chart moex_image \
+           --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
 
 
