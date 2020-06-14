@@ -13,7 +13,7 @@ class ErrorStatus(Enum):
 
 
 ErrorMessages = {
-    ErrorStatus.DO_NOT_HAVE_DATA: "We have no data to analyze.",
+    ErrorStatus.DO_NOT_HAVE_DATA: "There is no data to analyze.",
     ErrorStatus.STRICT_FILTER: "The server sent the data. But your date filter is too strict. "
                                "And we have no data to analyze. Try setting the date early."
 }
