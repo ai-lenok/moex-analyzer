@@ -4,6 +4,7 @@ import argparse
 
 from moex_chart import MoexChart
 from moex_analyzer import MoexAnalizer
+from moex_trend import MoexTrend
 
 
 def main():
@@ -11,6 +12,9 @@ def main():
 
     engine_analyzer = MoexAnalizer('stock', 'shares', args.board, args.security, args.date)
     data_frame = engine_analyzer.get_data_frame()
+
+    trend = MoexTrend()
+    trend.print_trend(data_frame, args.security)
 
     chart = MoexChart()
     chart.draw(data_frame, args.security, args.date)
