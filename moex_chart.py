@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+
+from pandas.plotting import register_matplotlib_converters
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import os
@@ -29,6 +31,8 @@ class MoexChart:
         :param security_name: name of security. User for file name and top of chart.
         :param date: date from start show. Use like filter.
         """
+        register_matplotlib_converters()
+
         day_price = data_frame[date:].price
         week_price = data_frame.price.rolling(5).mean()[date:]
         month_price = data_frame.price.rolling(20).mean()[date:]
