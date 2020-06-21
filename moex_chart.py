@@ -42,11 +42,11 @@ class MoexChart:
         months = mdates.MonthLocator()
         format_date = mdates.DateFormatter('%Y-%m')
 
-        fig, ax = plt.subplots(figsize=(16, 10))
+        fig, ax = plt.subplots(figsize=(12, 8))
         ax.set_title(security_name + ' price chart')
 
         plt.plot(date_x, day_price, 'red', label='Closing price of the day')
-        plt.plot(date_x, week_price, 'yellow', label='Weekly moving average')
+        plt.plot(date_x, week_price, '#e6c300', label='Weekly moving average')
         plt.plot(date_x, month_price, 'blue', label='Monthly moving average')
         plt.plot(date_x, year_price, 'green', label='Yearly moving average')
 

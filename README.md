@@ -7,7 +7,7 @@ A simple engine for analyzing Moscow Exchange securities
 ### Scheme
 ```shell script
 python3 main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BOARD 
-                      [--date DATE] [--chart]
+                              [--date DATE] [--chart]
 ```
 ### Arguments
 ```shell script
@@ -55,9 +55,10 @@ After that inside the `~/moex/chart` directory you can find charts with security
 # Output
 ## Analysis
 ```shell script
-MOEX Week change:  -1.98%
-MOEX Month change: -0.35%
-MOEX Year change:  24.12%
+MOEX Day change:   -2.48%
+MOEX Week change:  -6.15%
+MOEX Month change: 8.61%
+MOEX Year change:  23.91%
 ```
 ## Chart
 <img src="https://raw.githubusercontent.com/dzx912/moex-analyzer/master/example/MOEX.png" alt="MOEX price chart" width="800"/>
