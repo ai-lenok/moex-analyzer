@@ -4,10 +4,16 @@ A simple engine for analyzing Moscow Exchange securities
 
 # Launch
 ## Python
+
+### Prepare
+```shell script
+pip3 install . 
+```
+
 ### Scheme
 ```shell script
-python3 main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BOARD 
-                              [--date DATE] [--chart]
+python3 moex-analyzer [-h] --security SECURITY [SECURITY ...] --board BOARD 
+                      [--date DATE] [--chart]
 ```
 ### Arguments
 ```shell script
@@ -22,11 +28,11 @@ python3 main_moex_analysis.py [-h] --security SECURITY [SECURITY ...] --board BO
 ```
 ### Example
 ```shell script
-python3 main_moex_analysis.py --security MOEX SBER --board TQBR --date 2020-01-01 --chart
+python3 moex-analyzer --security MOEX SBER --board TQBR --date 2020-01-01 --chart
 ```
 Or
 ```shell script
-python3 main_moex_analysis.py --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
+python3 moex-analyzer --security SBMX SBSP --board TQTF --date 2020-01-01 --chart
 ```
 
 After that inside the `chart/` directory you can find charts with security prices.
