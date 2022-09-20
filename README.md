@@ -67,7 +67,7 @@ MOEX Month change: 8.61%
 MOEX Year change:  23.91%
 ```
 ## Chart
-<img src="https://raw.githubusercontent.com/dzx912/moex-analyzer/master/example/MOEX.png" alt="MOEX price chart" width="800"/>
+<img src="https://raw.githubusercontent.com/ai-lenok/moex-analyzer/master/example/MOEX.png" alt="MOEX price chart" width="800"/>
 
 # Docker hub
 https://hub.docker.com/r/dzx912/moex-analyzer
